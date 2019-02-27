@@ -32,12 +32,13 @@ class Dofa extends Module
 
     public function install()
     {
-        return parent::install() && $this->registerHook('DisplayHome');
+        return parent::install() && $this->registerHook('DisplayProductAdditionalInfo');
     }
 
-    public function hookDisplayHome()
+    public function hookDisplayProductAdditionalInfo()
     {
-        return '<h1>Sveiki atvyke!!</h1>';
+       return $this->display(__FILE__,'pirmas.php');
+
     }
 
 
