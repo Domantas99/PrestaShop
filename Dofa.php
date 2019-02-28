@@ -32,7 +32,12 @@ class Dofa extends Module
 
     public function install()
     {
-        return parent::install() && $this->registerHook('DisplayHome');
+        return parent::install() && $this->registerHook('DisplayHome') && $this->registerHook('displayAfterCarrier');
+    }
+
+    public function hookdisplayAfterCarrier()
+    {
+        return '<h1>kazkas</h1>';
     }
 
     public function hookDisplayHome()
