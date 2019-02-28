@@ -32,13 +32,17 @@ class Dofa extends Module
 
     public function install()
     {
+
+        /*<<<<<<< HEAD
         return parent::install() && $this->registerHook('DisplayProductAdditionalInfo');
+=======
+        return parent::install() && $this->registerHook('DisplayProductAdditionalInfo'));
     }
 
     public function hookDisplayProductAdditionalInfo()
     {
-       return $this->display(__FILE__,'pirmas.php');
-
+       return $this->display(__FILE__,'CommentSection.php');
+*/
     }
 
 
