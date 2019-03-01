@@ -33,17 +33,27 @@ class Dofa extends Module
     public function install()
     {
 
-        /*<<<<<<< HEAD
-        return parent::install() && $this->registerHook('DisplayProductAdditionalInfo');
-=======
-        return parent::install() && $this->registerHook('DisplayProductAdditionalInfo'));
+
+        return parent::install()
+            && $this->registerHook('DisplayProductAdditionalInfo')
+            && $this->registerHook('actionFrontControllerSetMedia');
+
+
     }
 
     public function hookDisplayProductAdditionalInfo()
     {
-       return $this->display(__FILE__,'CommentSection.php');
-*/
-    }
+       return  $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl');
 
+       // return $this->display(__FILE__,'pirmas.php');
+
+    }
+    public function hookActionFrontControllerSetMedia()
+    {
+
+       $this->context->controller->registerStylesheet('dofa-form','modules/dofa/views/css/form.css');
+       $this->context->controller->registerJavascript('dofa-form','modules/dofa/views/css/form.css');
+
+    }
 
 }
