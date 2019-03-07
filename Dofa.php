@@ -24,9 +24,7 @@ class Dofa extends Module
         parent::__construct();
 
         $this->displayName = $this->l('Welcome to Dofa');
-        $this->description = $this->l(
-            'Sveitaine'
-        );
+        $this->description = $this->l('Sveitaine');
         //$this->ps_versions_compliancy = array('min' => '1.7.2.0', 'max' => _PS_VERSION_);
     }
 
@@ -55,6 +53,7 @@ class Dofa extends Module
         `email` varchar(255) NOT NULL,
         `phone_number` varchar(255) NOT NULL,
         `comment` varchar(255) NOT NULL,
+        `star_rating` int(10)  NOT NULL,
         PRIMARY KEY (`id_comment`)
         ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=UTF8;');
 
@@ -62,6 +61,11 @@ class Dofa extends Module
 
     public function hookDisplayProductAdditionalInfo()
     {
+        $this->context->smarty->assign(array(
+            'commentSubmit'=>$this->context->link->getModuleLink($this->name, 'commentSubmit')
+
+
+        ));
         return $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl');
 
 
@@ -111,7 +115,7 @@ class Dofa extends Module
         );
     }
 
-
+/**
     public function  insertData()
     {
 
@@ -128,5 +132,5 @@ class Dofa extends Module
 
 
     }
-
+*/
 }
