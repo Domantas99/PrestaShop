@@ -33,7 +33,7 @@ class Dofa extends Module
 
 
         return parent::install()
-            && $this->registerHook('DisplayProductAdditionalInfo')
+            && $this->registerHook('displayReassurance')
             && $this->registerHook('actionFrontControllerSetMedia')
             && $this->createTables();
     }
@@ -48,7 +48,7 @@ class Dofa extends Module
         return (bool)Db::getInstance()->execute('
         CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'product_comments` (
         `id_comment` int(10) unsigned NOT NULL AUTO_INCREMENT,
-        `id_product` int(10)  NOT NULL,
+        `id_product` int(255) NOT NULL,
         `username` varchar(255) NOT NULL,
         `email` varchar(255) NOT NULL,
         `phone_number` varchar(255) NOT NULL,
@@ -59,14 +59,16 @@ class Dofa extends Module
 
     }
 
-    public function hookDisplayProductAdditionalInfo()
+    public function hookDisplayReassurance()
     {
+
         $this->context->smarty->assign(array(
             'commentSubmit'=>$this->context->link->getModuleLink($this->name, 'commentSubmit')
 
 
         ));
-        return $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl');
+        return $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl' );
+
 
 
         // return $this->display(__FILE__,'pirmas.php');
@@ -78,6 +80,8 @@ class Dofa extends Module
 
         $this->context->controller->registerStylesheet('dofa-form', 'modules/dofa/views/css/form.css');
         $this->context->controller->registerJavascript('dofa-form', 'modules/dofa/views/css/form.css');
+        $this->context->controller->registerStylesheet('dofa-form', 'modules/dofa/views/css/5star.css');
+        $this->context->controller->registerJavascript('dofa-form', 'modules/dofa/views/css/5star.css');
 
     }
 
@@ -115,22 +119,5 @@ class Dofa extends Module
         );
     }
 
-/**
-    public function  insertData()
-    {
 
-        $username = Tools::getValue('username');
-        $email = Tools::getValue('email');
-        $phone_number = Tools::getValue('phone_number');
-        $comment  = Tools::getValue('comment ');
-        Db::getInstance()->insert('ps_product_comments', array(
-            'username' => psql($username),
-            'email'      => pSQL($email),
-            'phone_number'      => pSQL($phone_number),
-            'comment '      => pSQL($comment ),
-        ));
-
-
-    }
-*/
 }
