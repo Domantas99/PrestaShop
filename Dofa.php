@@ -15,7 +15,7 @@ class Dofa extends Module
 
     public function __construct()
     {
-        $this->name = 'Dofa';
+        $this->name = 'dofa';
         $this->author = 'Domantas ir Faustas';
         //$this->tab = 'front_office_features';
         $this->version = '0.0.1';
