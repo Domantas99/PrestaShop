@@ -39,4 +39,6 @@ class DofaCommentSubmitModuleFrontController extends ModuleFrontController
          Tools::redirect($this->context->link->getProductLink($id_product));
 
      }
+
+
 }

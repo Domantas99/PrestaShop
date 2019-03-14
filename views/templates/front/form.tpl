@@ -19,3 +19,25 @@
       <input type="reset"     name="reset"    value="Delete" >
 
   </form>
+  <ul>
+      <br>
+      <h1>Comments</h1>
+      {foreach from=$comments item=comment}
+
+          <div class="row card commentBlock">
+              <div class="col-xs-10 h4 ">{$comment['username']}</div>
+              <div class="col-xs-2">{$comment['star_rating']}/5 </div>
+              <p class="col-xs-12">{$comment['comment']}</p>
+
+
+          </div>
+
+
+      {/foreach}
+  </ul>
+
+
+
+
+
+

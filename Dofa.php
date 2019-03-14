@@ -62,12 +62,15 @@ class Dofa extends Module
     public function hookDisplayReassurance()
     {
 
-        $this->context->smarty->assign(array(
-            'commentSubmit'=>$this->context->link->getModuleLink($this->name, 'commentSubmit')
+        $comment=Db::getInstance()->executeS('select * from  ps_product_comments where id_product='.Tools::getValue('id_product'));
 
+        $this->context->smarty->assign(array(
+            'commentSubmit'=>$this->context->link->getModuleLink($this->name, 'commentSubmit'),
+            'comments'=>$comment,
 
         ));
-        return $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl' );
+        return
+             $this->context->smarty->fetch('module:dofa/views/templates/front/form.tpl');
 
 
 
